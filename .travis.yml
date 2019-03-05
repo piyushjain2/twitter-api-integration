@@ -14,7 +14,7 @@ script:
   - docker images piyush240591/twitter-integration
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker push piyush240591/twitter-integration;
     fi
 notifications:
