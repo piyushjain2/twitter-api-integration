@@ -10,9 +10,11 @@ services:
 before_install:
   - docker build -t piyush240591/twitter-integration .
 script: echo "npm test temporarily disabled"
-deploy:
-  provider: script
-  script: bash docker_push
-  on:
-    branch: master
+after_success:
+  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD ;
+    make push-image ;
+    fi
+notifications:
+  email: false
 
