@@ -13,7 +13,7 @@ script: echo "npm test temporarily disabled"
 after_success:
   - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD ;
-    make push-image ;
+    docker push piyush240591/twitter-integration;
     fi
 notifications:
   email: false
