@@ -5,4 +5,8 @@ node_js:
 cache:
   directories:
     - "node_modules"
+services:
+  - docker
+before_install:
+  - docker build -t piyush240591/twitter-integration .
 script: echo "npm test temporarily disabled"
