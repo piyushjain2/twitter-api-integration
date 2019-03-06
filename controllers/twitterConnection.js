@@ -9,7 +9,7 @@ var client = new Twitter({
 exports.connection_getAll = function(req, res) {
   client.get(
     "statuses/user_timeline",
-    { screen_name: "abhi_loves_you", count: 200 },
+    { screen_name: "piyushjain_2", count: 200 },
     function(error, tweets, response) {
       if (!error) {
         //console.log("4545");
