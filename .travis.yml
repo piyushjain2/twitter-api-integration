@@ -5,17 +5,21 @@ node_js:
 cache:
   directories:
     - "node_modules"
+env:
+  - SH=bash
+  - PACKAGE_VERSION="v1.0.${TRAVIS_JOB_ID}"
 services:
   - docker
 before_install:
-  - docker build -t piyush240591/twitter-integration .
+  - docker build -t ${DOCKER_USERNAME}/twitter-integration:${PACKAGE_VERSION} .
 script:
   - echo "npm test temporarily disabled"
-  - docker images piyush240591/twitter-integration
+  - docker images ${DOCKER_USERNAME}/twitter-integration
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push piyush240591/twitter-integration;
+    docker tag  ${DOCKER_USERNAME}/twitter-integration:${PACKAGE_VERSION} ${DOCKER_USERNAME}/twitter-integration:${PACKAGE_VERSION}
+    docker push ${DOCKER_USERNAME}/twitter-integration:${PACKAGE_VERSION};
     fi
 notifications:
   email: false
