@@ -8,15 +8,15 @@ cache:
 services:
   - docker
 before_install:
-  - docker build -t twitter-integration:travis-$TRAVIS_BUILD_NUMBER .
+  - docker build -t twitter-integration:$TRAVIS_BUILD_NUMBER .
 script:
   - echo "npm test temporarily disabled"
   - docker images twitter-integration
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker tag twitter-integration:travis-$TRAVIS_BUILD_NUMBER "$DOCKER_USERNAME"/twitter-integration:travis-$TRAVIS_BUILD_NUMBER;
-    docker push "$DOCKER_USERNAME"/twitter-integration:travis-$TRAVIS_BUILD_NUMBER;
+    docker tag twitter-integration:$TRAVIS_BUILD_NUMBER "$DOCKER_USERNAME"/twitter-integration:$TRAVIS_BUILD_NUMBER;
+    docker push "$DOCKER_USERNAME"/twitter-integration:$TRAVIS_BUILD_NUMBER;
     fi
 notifications:
   email: false

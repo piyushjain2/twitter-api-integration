@@ -5,7 +5,7 @@
 
 ----
 
-###Installation Guide 
+### Installation Guide 
 
 1. Install node using `sudo apt-get update; sudo apt-get install nodejs; sudo apt-get install npm`
 2. Run `npm install`
@@ -13,9 +13,9 @@
 
 ----
 
-####Twitter API is used for fetching data.
-####Travis CI is used for CI pipeline. 
-####Docker Hub is used for hosting docker image.
+#### Twitter API is used for fetching data.
+#### Travis CI is used for CI pipeline. 
+#### Docker Hub is used for hosting docker image.
 
 ----
 ## 1. API to get all tweets by a user by screen name.
